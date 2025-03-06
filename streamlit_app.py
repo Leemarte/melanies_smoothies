@@ -25,7 +25,7 @@ session = cnx.session()
 my_dataframe = session.table("smoothies.public.fruit_options").select(col('FRUIT_NAME'))
 #st.dataframe(data=my_dataframe, use_container_width=True)
 
-ingredient_list = streamlit.multiselect(
+ingredient_list = st.multiselect(
     'Choose up to 5 ingredients:',
       my_dataframe,
       max_selections=5)
@@ -43,7 +43,7 @@ if ingredient_list:
             values ('""" + ingredients_string + """','"""+name_on_order+"""')"""
     time_to_insert = st.button('Submit Order')
 
-    streamlit.write(my_insert_stmt)
+    st.write(my_insert_stmt)
     #st.stop()
     
     if time_to_insert:
