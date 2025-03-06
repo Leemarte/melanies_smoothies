@@ -10,16 +10,16 @@ helpful_links = [
 ]
 
 # Write directly to the app
-streamlit.title(":cup_with_straw: Customize your Smoothie:cup_with_straw:")
-streamlit.write(
+st.title(":cup_with_straw: Customize your Smoothie:cup_with_straw:")
+st.write(
     f"""Choose the fruits you want in your custom smoothie!""")
 
 #import streamlit as st
 
 name_on_order = st.text_input("Name on Smoothie")
-streamlit.write("The name of your smoothie will be:", name_on_order)
+st.write("The name of your smoothie will be:", name_on_order)
 
-cnx = streamlit.connection("snowflake")
+cnx = st.connection("snowflake")
 session = cnx.session()
 
 my_dataframe = session.table("smoothies.public.fruit_options").select(col('FRUIT_NAME'))
